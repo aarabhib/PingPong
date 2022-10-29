@@ -2,12 +2,31 @@ from pygame import *
 
 clock = time.Clock()
 FPS = 60
-
 game = True
 
 window = display.set_mode((700,500))
 display.set_caption('Ping Pong Game')
-background = transform.scale(image.load("galaxy.jpg"), (700,500))
+
+class ball():
+    def update(self):
+        self.rect.y += self.speed
+
+        if self.rect.y > 500:
+            global missed_counter
+            missed_counter += 1
+            self.rect.y = 0
+            self.rect.x = random.randint(0,625)
+
+class paddles():
+    def update(self):
+        self.rect.y += self.speed
+
+        if self.rect.y > 500:
+            global missed_counter
+            missed_counter += 1
+            self.rect.y = 0
+            self.rect.x = random.randint(0,625)
+
 
 
 while game:
@@ -15,7 +34,7 @@ while game:
         if e.type == QUIT:
             game = False
 
-    window.blit(background, (0,0))
+    display.fill(255,255,255)
 
     display.update()
     clock.tick(FPS)
