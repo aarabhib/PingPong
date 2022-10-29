@@ -39,6 +39,23 @@ class Paddles(GameSprite):
             self.rect.y = 0
             self.rect.x = random.randint(0,625)
 
+    def update_left(self):
+        keys_pressed = key.get_pressed()
+        #WSkeys
+        if keys_pressed[K_w] and self.rect.y > 5:
+            self.rect.y -= 10
+        if keys_pressed[K_s] and self.rect.y < 350:
+            self.rect.y += 10
+
+    def update_right(self):
+        keys_pressed = key.get_pressed()
+        #UDkeys
+        if keys_pressed[K_UP] and self.rect.y > 5:
+            self.rect.y -= 10
+        if keys_pressed[K_DOWN] and self.rect.y < 350:
+            self.rect.y += 10
+
+
 #adding sprites
 ball = Ball("ball.png", 300, 400, 10, 65, 65)
 paddle1 = Paddles("paddle.png", 100, 100, 10, 25, 150)
@@ -53,6 +70,9 @@ while game:
     ball.draw()
     paddle1.draw()
     paddle2.draw()
+
+    paddle1.update_left()
+    paddle2.update_right()
 
     display.update()
     clock.tick(FPS)
