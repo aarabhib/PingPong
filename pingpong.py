@@ -31,8 +31,18 @@ class Ball(GameSprite):
             self.rect.y = 0
             self.rect.x = random.randint(0,625)
 
-#adding ball
+class Paddles(GameSprite):
+    def update(self):
+        self.rect.y += self.speed
+
+        if self.rect.y > 500:
+            self.rect.y = 0
+            self.rect.x = random.randint(0,625)
+
+#adding sprites
 ball = Ball("ball.png", 300, 400, 10, 65, 65)
+paddle1 = Paddles("paddle.png", 100, 100, 10, 25, 150)
+paddle2 = Paddles("paddle.png", 600, 100, 10, 25, 150)
 
 #game loop
 while game:
@@ -41,6 +51,8 @@ while game:
             game = False
 
     ball.draw()
+    paddle1.draw()
+    paddle2.draw()
 
     display.update()
     clock.tick(FPS)
