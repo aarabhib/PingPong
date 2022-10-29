@@ -33,18 +33,18 @@ class Ball(GameSprite):
             self.rect.x = random.randint(0,625)
 
     def move(self):
-        print("the move function")
+        #print("the move function")
         self.rect.x = self.rect.x + random.randint(0, 10)
-        if self.rect.x < 5:
-            self.rect.x = self.rect.x + 5
-        if self.rect.x > 500:
-            self.rect.x = self.rect.x - 5
+        if self.rect.x < 25:
+            self.rect.x = self.rect.x + 10
+        if self.rect.x > 300:
+            self.rect.x = self.rect.x - 10
 
         self.rect.y = self.rect.y + random.randint(0, 10)
-        if self.rect.y < 5:
-            self.rect.y = self.rect.y + 5
-        if self.rect.y > 500:
-            self.rect.y = self.rect.y - 5
+        if self.rect.y < 25:
+            self.rect.y = self.rect.y + 10
+        if self.rect.y > 400:
+            self.rect.y = self.rect.y - 10
 
 
 class Paddles(GameSprite):
