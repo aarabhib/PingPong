@@ -43,24 +43,6 @@ class Ball(GameSprite):
             self.y_speed = -self.y_speed
 
 
-        if self.rect.y > 500:
-            self.rect.y = 0
-            self.rect.x = random.randint(0,625)
-
-        #print("the move function")
-        self.rect.x = self.rect.x + random.randint(0, 10)
-        if self.rect.x < 25:
-            self.rect.x = self.rect.x + 10
-        if self.rect.x > 300:
-            self.rect.x = self.rect.x - 10
-
-        self.rect.y = self.rect.y + random.randint(0, 10)
-        if self.rect.y < 25:
-            self.rect.y = self.rect.y + 10
-        if self.rect.y > 400:
-            self.rect.y = self.rect.y - 10
-
-
 class Paddles(GameSprite):
     def update(self):
         self.rect.y += self.speed
