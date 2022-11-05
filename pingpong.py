@@ -1,10 +1,11 @@
 from pygame import *
 import random
 
-#time variables
+#variables
 clock = time.Clock()
 FPS = 60
 game = True
+counter = 0
 
 #window
 window = display.set_mode((700,500))
@@ -70,8 +71,8 @@ class Paddles(GameSprite):
 
 #adding sprites
 ball = Ball("ball.png", 300, 400, 10, 10, 60, 60)
-paddle1 = Paddles("paddle.png", 100, 100, 10, 0, 25, 150)
-paddle2 = Paddles("paddle.png", 600, 100, 10, 0, 25, 150)
+paddle1 = Paddles("paddle.png", 10, 100, 10, 0, 25, 150)
+paddle2 = Paddles("paddle.png", 670, 100, 10, 0, 25, 150)
 
 #game loop
 while game:
@@ -89,6 +90,23 @@ while game:
 
     paddle1.update_left()
     paddle2.update_right()
+
+    if sprite.collide_rect(ball, paddle1):
+        ball.x_speed = -ball.x_speed
+
+    if sprite.collide_rect(ball, paddle2):
+        ball.x_speed = -ball.x_speed
+
+    if ball.rect.x < 10:
+        print("ZERO")
+        counter += 1
+
+    if ball.rect.x > 670:
+        print("SEVEN HUNDRED")
+        counter += 1
+    print("counter is: " + str(counter))
+    if counter >= 10:
+        game = False
 
     display.update()
     clock.tick(FPS)
