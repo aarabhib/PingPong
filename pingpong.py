@@ -85,37 +85,39 @@ while game:
         if e.type == QUIT:
             game = False
 
-    window.blit(background, (0,0))
+    if finish != True:
+        window.blit(background, (0,0))
 
-    ball.draw()
-    ball.update()
+        ball.draw()
+        ball.update()
 
-    paddle1.draw()
-    paddle2.draw()
+        paddle1.draw()
+        paddle2.draw()
 
-    paddle1.update_left()
-    paddle2.update_right()
+        paddle1.update_left()
+        paddle2.update_right()
 
-    if sprite.collide_rect(ball, paddle1):
-        ball.x_speed = -ball.x_speed
+        if sprite.collide_rect(ball, paddle1):
+            ball.x_speed = -ball.x_speed
 
-    if sprite.collide_rect(ball, paddle2):
-        ball.x_speed = -ball.x_speed
+        if sprite.collide_rect(ball, paddle2):
+            ball.x_speed = -ball.x_speed
 
-    if ball.rect.x < 10:
-        print("ZERO")
-        counter += 1
+        if ball.rect.x < 10:
+            print("ZERO")
+            counter += 1
 
-    if ball.rect.x > 670:
-        print("SEVEN HUNDRED")
-        counter += 1
+        if ball.rect.x > 670:
+            print("SEVEN HUNDRED")
+            counter += 1
 
-    print("counter is: " + str(counter))
+        print("counter is: " + str(counter))
 
     if counter >= 4:
         finish = True
         window.blit(background, (0,0))
         window.blit(lose, (200,200))
+
 
     display.update()
     clock.tick(FPS)
