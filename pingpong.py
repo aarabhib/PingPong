@@ -76,7 +76,7 @@ paddle1 = Paddles("paddle.png", 10, 100, 10, 0, 25, 150)
 paddle2 = Paddles("paddle.png", 670, 100, 10, 0, 25, 150)
 
 font.init()
-font = font.SysFont('Papyrus', 40, True)
+font = font.SysFont('Papyrus', 35, True)
 lose = font.render('GAME OVER', True, (250, 250, 250))
 
 #game loop
