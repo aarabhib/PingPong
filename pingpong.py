@@ -5,6 +5,7 @@ import random
 clock = time.Clock()
 FPS = 60
 game = True
+finish = False
 counter = 0
 
 #window
@@ -74,6 +75,10 @@ ball = Ball("ball.png", 300, 400, 10, 10, 60, 60)
 paddle1 = Paddles("paddle.png", 10, 100, 10, 0, 25, 150)
 paddle2 = Paddles("paddle.png", 670, 100, 10, 0, 25, 150)
 
+font.init()
+font = font.SysFont('Papyrus', 40, True)
+lose = font.render('GAME OVER', True, (250, 250, 250))
+
 #game loop
 while game:
     for e in event.get():
@@ -104,9 +109,13 @@ while game:
     if ball.rect.x > 670:
         print("SEVEN HUNDRED")
         counter += 1
+
     print("counter is: " + str(counter))
-    if counter >= 10:
-        game = False
+
+    if counter >= 4:
+        finish = True
+        window.blit(background, (0,0))
+        window.blit(lose, (200,200))
 
     display.update()
     clock.tick(FPS)
