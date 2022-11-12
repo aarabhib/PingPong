@@ -81,15 +81,23 @@ font = font.SysFont('Papyrus', 35, True)
 lose = font.render('GAME OVER', True, (250, 250, 250))
 
 #creating button
+'''
 restart_btn = Surface(100,25)
 restart_btn.fill(255,0,0)
 restart_txt = font.render("Restart", True, (255,255,255))
+'''
+restart_btn = Rect(300,400,100,25)
 
 #game loop
 while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+        if e.type == MOUSEBUTTONUP:
+            if e.pos[0] > 300 and e.pos[0] < 400 and e.pos[1] > 400 and e.pos[1] < 425:
+                finished = False
+                ball.rect.x = 350
+                ball.rect.y = 250 
 
     if finish != True:
         window.blit(background, (0,0))
