@@ -99,8 +99,10 @@ while game:
         if e.type == QUIT:
             game = False
         if e.type == MOUSEBUTTONUP:
+            print("mouse button up", e.pos[0], e.pos[1])
             if e.pos[0] > 300 and e.pos[0] < 400 and e.pos[1] > 400 and e.pos[1] < 425:
-                finished = False
+                print("button clicked")
+                finish = False
                 ball.rect.x = 350
                 ball.rect.y = 250 
 
@@ -128,17 +130,13 @@ while game:
         if ball.rect.x > 670:
             counter += 1
 
-    if counter >= 4:
-        finish = True
-        window.blit(background, (0,0))
-        window.blit(lose, (200,200))
-        restart_button.draw()
-        window.blit(restart_text, (300,400))
+        if counter >= 4:
+            finish = True
+            window.blit(background, (0,0))
+            window.blit(lose, (200,200))
+            restart_button.draw()
+            finish = False
+            window.blit(restart_text, (300,400))
 
     display.update()
     clock.tick(FPS)
-'''
-    else:
-        window.blit(restart_btn, (300,400))
-        window.blit(restart_text, (300,400))
-        '''
