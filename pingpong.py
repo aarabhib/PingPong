@@ -75,9 +75,15 @@ ball = Ball("ball.png", 300, 400, 10, 10, 60, 60)
 paddle1 = Paddles("paddle.png", 10, 100, 10, 0, 25, 150)
 paddle2 = Paddles("paddle.png", 670, 100, 10, 0, 25, 150)
 
+#text
 font.init()
 font = font.SysFont('Papyrus', 35, True)
 lose = font.render('GAME OVER', True, (250, 250, 250))
+
+#creating button
+restart_btn = Surface(100,25)
+restart_btn.fill(255,0,0)
+restart_txt = font.render("Restart", True, (255,255,255))
 
 #game loop
 while game:
