@@ -81,12 +81,11 @@ font = font.SysFont('Papyrus', 35, True)
 lose = font.render('GAME OVER', True, (250, 250, 250))
 
 #creating button
-'''
-restart_btn = Surface(100,25)
-restart_btn.fill(255,0,0)
-restart_txt = font.render("Restart", True, (255,255,255))
-'''
+
+#restart_btn = Surface(100, 25)
 restart_btn = Rect(300,400,100,25)
+#restart_btn.fill(255,255,255)
+restart_text = font.render("Restart", True, (255,255,255))
 
 #game loop
 while game:
@@ -118,20 +117,21 @@ while game:
             ball.x_speed = -ball.x_speed
 
         if ball.rect.x < 10:
-            print("ZERO")
             counter += 1
 
         if ball.rect.x > 670:
-            print("SEVEN HUNDRED")
             counter += 1
 
-        print("counter is: " + str(counter))
+    else:
+        window.blit(restart_btn, (300,400))
+        window.blit(restart_text, (300,400))
+
+        #print("counter is: " + str(counter))
 
     if counter >= 4:
         finish = True
         window.blit(background, (0,0))
         window.blit(lose, (200,200))
-
 
     display.update()
     clock.tick(FPS)
