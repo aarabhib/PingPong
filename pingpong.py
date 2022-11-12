@@ -69,11 +69,22 @@ class Paddles(GameSprite):
         if keys_pressed[K_DOWN] and self.rect.y < 350:
             self.rect.y += 10
 
+class Button():
+    def __init__(self, x, y, img):
+        self.img = transform.scale(image.load("button.png"), (100,300))
+        self.rect = self.img.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def draw(self):
+        window.blit(self.img, (self.rect.x, self.rect.y))
+
 
 #adding sprites
 ball = Ball("ball.png", 300, 400, 10, 10, 60, 60)
 paddle1 = Paddles("paddle.png", 10, 100, 10, 0, 25, 150)
 paddle2 = Paddles("paddle.png", 670, 100, 10, 0, 25, 150)
+restart_button = Button(300, 400, "button.png")
 
 #text
 font.init()
@@ -83,9 +94,9 @@ lose = font.render('GAME OVER', True, (250, 250, 250))
 #creating button
 
 #restart_btn = Surface(100, 25)
-restart_btn = Rect(300,400,100,25)
+#restart_btn = Rect(300,400,100,25)
 #restart_btn.fill(255,255,255)
-restart_text = font.render("Restart", True, (255,255,255))
+#restart_text = font.render("Restart", True, (255,255,255))
 
 #game loop
 while game:
@@ -122,12 +133,6 @@ while game:
         if ball.rect.x > 670:
             counter += 1
 
-    else:
-        window.blit(restart_btn, (300,400))
-        window.blit(restart_text, (300,400))
-
-        #print("counter is: " + str(counter))
-
     if counter >= 4:
         finish = True
         window.blit(background, (0,0))
@@ -135,3 +140,8 @@ while game:
 
     display.update()
     clock.tick(FPS)
+'''
+    else:
+        window.blit(restart_btn, (300,400))
+        window.blit(restart_text, (300,400))
+        '''
