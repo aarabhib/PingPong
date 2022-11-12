@@ -128,7 +128,7 @@ while game:
         if ball.rect.x > 670:
             counter += 1
 
-        if counter >= 4:
+        if counter >= 10:
             finish = True
             window.blit(background, (0,0))
             window.blit(lose, (200,200))
