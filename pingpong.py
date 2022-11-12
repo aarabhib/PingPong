@@ -71,7 +71,7 @@ class Paddles(GameSprite):
 
 class Button():
     def __init__(self, x, y, img):
-        self.img = transform.scale(image.load("button.png"), (100,300))
+        self.img = transform.scale(image.load("button.png"), (100,30))
         self.rect = self.img.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -137,6 +137,7 @@ while game:
         finish = True
         window.blit(background, (0,0))
         window.blit(lose, (200,200))
+        restart_button.draw()
 
     display.update()
     clock.tick(FPS)
